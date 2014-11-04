@@ -4,6 +4,7 @@ package com.wizky.housediary.wxapi;
 import com.tencent.mm.sdk.constants.ConstantsAPI;
 import com.tencent.mm.sdk.modelbase.BaseReq;
 import com.tencent.mm.sdk.modelbase.BaseResp;
+import com.tencent.mm.sdk.modelmsg.SendAuth;
 import com.tencent.mm.sdk.modelmsg.ShowMessageFromWX;
 import com.tencent.mm.sdk.modelmsg.WXAppExtendObject;
 import com.tencent.mm.sdk.modelmsg.WXMediaMessage;
@@ -49,6 +50,20 @@ public class WXEntryActivity extends Activity implements IWXAPIEventHandler{
 			    api.registerApp(Constants.APP_ID);    	
 			}
 		});
+    	
+    	loginBtn = (Button) findViewById(R.id.login_btn);
+    	loginBtn.setOnClickListener(new View.OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				// send oauth request 
+				final SendAuth.Req req = new SendAuth.Req();
+				req.scope = "snsapi_userinfo";
+				req.state = "wechat_sdk_demo_test";
+				api.sendReq(req);
+			}
+		});
+    	
     	
         gotoBtn = (Button) findViewById(R.id.goto_send_btn);
         gotoBtn.setOnClickListener(new View.OnClickListener() {
@@ -113,6 +128,7 @@ public class WXEntryActivity extends Activity implements IWXAPIEventHandler{
 	@Override
 	public void onResp(BaseResp resp) {
 		int result = 0;
+		SendAuth.Resp response = new SendAuth.Resp();
 		
 		switch (resp.errCode) {
 		case BaseResp.ErrCode.ERR_OK:

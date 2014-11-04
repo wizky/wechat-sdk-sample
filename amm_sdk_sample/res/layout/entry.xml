@@ -9,7 +9,12 @@
         android:layout_height="wrap_content"
 	 	android:textSize="20dp"
         android:text="@string/enter"/>
-    
+     <Button
+        android:id="@+id/login_btn"
+        style="@style/MMLineActionButton"
+	    android:layout_margin="10dp"
+        android:text="@string/login"/>
+      
     <Button
         android:id="@+id/reg_btn"
         style="@style/MMLineActionButton"

@@ -27,7 +27,7 @@ public class WXEntryActivity extends Activity implements IWXAPIEventHandler{
 	
 	private static final int TIMELINE_SUPPORTED_VERSION = 0x21020001;
 	
-	private Button gotoBtn, regBtn, launchBtn, checkBtn;
+	private Button gotoBtn, regBtn, loginBtn, launchBtn, checkBtn;
 	
 	// IWXAPI 是第三方app和微信通信的openapi接口
     private IWXAPI api;
